@@ -1,0 +1,13 @@
+# Dossiers de compilation
+build/
+out/
+bin/
+
+# Fichiers VS Code (optionnel)
+.vscode/
+
+# Fichiers Visual Studio
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
