@@ -22,7 +22,7 @@ void  Game::Update() {
 
 void Game::Tests() {
     // Dessin de primitives pour tests
-    DrawText("Félicitations pour vos 25 ans de C++ !", 190, 200, 20, LIGHTGRAY);
+    DrawText("Hello Ouaurld", 190, 200, 20, LIGHTGRAY);
     DrawCircle(400, 120, 35, LIME);
     DrawRectangle(300, 300, 200, 100, RED);
     DrawLine(10, 10, 790, 440, YELLOW);
