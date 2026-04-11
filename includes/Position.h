@@ -2,10 +2,10 @@
 
 class Position {
 public: 
-    Position(int row, int col) : row(row), col(col) {};
-    
-    inline int getRow() const { return row; };
-    inline int getCol() const { return col; };
+    Position(int row, int col);
+    ~Position() = default;
+    inline int GetRow() const { return row; };
+    inline int GetCol() const { return col; };
 
 private:
     int row;

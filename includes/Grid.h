@@ -1,21 +1,23 @@
 #pragma once
 #include <vector>
 #include "raylib.h"
+#include "constants.h"
+#include "Blocks.h"
 
 class Grid {   
 public:
     Grid();
     ~Grid() = default;
     void Draw();
-    void Print();
-
+    
 
 private:
     void Initialize();
-    int numRows;
-    int numCols;
-    int cellSize;
-    std::vector<Color> colors; // Couleurs pour les différentes pièces 
-    std::vector<Color> getCellColors(); // Méthode pour obtenir les couleurs des cellules
-    int grid[20][10]; // Matrice de 20x10 pour représenter la grille de jeu
+    #ifndef NDEBUG
+        void Print();
+        void Test();
+    #endif
+    int grid[GRID_ROWS][GRID_COLS]; // Matrice pour représenter la grille de jeu
+
+    std::vector<Block> blocks; // Vecteur pour stocker les blocs présents dans la grille
 };

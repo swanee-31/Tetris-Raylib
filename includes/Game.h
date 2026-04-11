@@ -1,5 +1,6 @@
 #pragma once
 #include "Grid.h"
+#include "memory"
 
 class Game {
 public:
@@ -13,9 +14,5 @@ private:
     void Init();
     void Draw();
     void Update();
-    Grid grid; 
-
-    void Tests(); // pour faire des tests de dessins
-    
+    std::unique_ptr<Grid> grid;
 };
-
