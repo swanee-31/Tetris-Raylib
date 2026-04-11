@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(MonJeuCpp VERSION 1.0.0 LANGUAGES CXX)
+project(Tetris-Raylib VERSION 1.0.0 LANGUAGES CXX)
 
 # Configuration standard C++ 
 set(CMAKE_CXX_STANDARD 20)
@@ -22,6 +22,9 @@ set(SOURCES
     main.cpp
     src/Game.cpp
     src/Grid.cpp
+    src/Position.cpp
+    src/Block.cpp
+    src/Blocks.cpp
 )
 
 # 2. On crée l'exécutable en indiquant la cible et ses sources
@@ -35,7 +38,7 @@ target_link_libraries(${PROJECT_NAME} raylib)
 
 # --- Options spécifiques à Windows pour éviter la console en arrière-plan ---
 if(WIN32)
-    target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:Release>:/SUBSYSTEM:WINDOWS>)
+    target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:Release>:/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup>)
 endif()
 
 
