@@ -25,6 +25,7 @@ set(SOURCES
     src/Position.cpp
     src/Block.cpp
     src/Blocks.cpp
+    src/Panel.cpp
 )
 
 # 2. On crée l'exécutable en indiquant la cible et ses sources

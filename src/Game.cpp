@@ -8,6 +8,8 @@ Game::Game()
 {
     Init();
     grid = std::make_unique<Grid>();
+    panel = std::make_unique<Panel>();
+    
     if (!grid)
     {
         std::cerr << "Erreur lors de la création de la grille !" << std::endl;
@@ -51,6 +53,7 @@ void Game::Draw()
     ClearBackground(BACKGROUND_COLOR);
     grid->Draw();        // Dessine la grille
     currentBlock.Draw(); // Dessine le bloc actuel
+    panel->Draw();
 
     EndDrawing();
 }
