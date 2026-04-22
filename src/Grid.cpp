@@ -4,6 +4,10 @@
 
 Grid::Grid()
 {
+    /**
+     * @brief Fonction Initialize.
+     *
+     */
     Initialize();
 #ifndef NDEBUG
  //   Print(); // Affiche la grille dans la console pour vérifier son initialisation
@@ -40,12 +44,12 @@ void Grid::ClearRow(int row)
     }
 }
 
-void Grid::MoveRowsDown(int startRow, int numRows)
+void Grid::MoveRowsDown(int row, int numRows)
 {
     for ( int col = 0; col < GRID_COLS; col++ )
     {
-        grid[startRow + numRows][col] = grid[startRow][col]; // Déplace la ligne de départ vers le bas
-        grid[startRow][col] = 0; // Efface la ligne de départ après l'avoir déplacée
+        grid[row + numRows][col] = grid[row][col]; // Déplace la ligne vers le bas
+        grid[row][col] = 0; // Efface la ligne d'origine
     }   
 }
 
@@ -89,18 +93,20 @@ bool Grid::IsCellEmpty(int row, int col) {
     }
 
 int Grid::ClearFullRows()
+{
+    int completed = 0; // Compteur de lignes complètes
+    for (int row = GRID_ROWS - 1; row >= 0; row--)
     {
-        int completed = 0; // Compteur de lignes complètes
-        for (int row = GRID_ROWS - 1; row >= 0; row--)
+        if (IsRowFull(row))
         {
-            if (IsRowFull(row))
-            {
-                ClearRow(row); // Efface la ligne complète
-                MoveRowsDown(0, row); // Fait descendre les lignes au-dessus de la ligne effacée
-                completed++; // Incrémente le compteur de lignes complètes
-                row++; // Recheck la même ligne après l'avoir déplacée vers le bas
-            }
+            ClearRow(row); // Efface la ligne complète
+            completed++; // Incrémente le compteur de lignes complètes
         }
-
-        return completed;
+        else if (completed > 0)
+        {
+            MoveRowsDown(row, completed); // Fait descendre la ligne du nombre de lignes complétées en dessous
+        }
     }
+
+    return completed;
+}

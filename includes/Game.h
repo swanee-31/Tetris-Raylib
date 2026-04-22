@@ -12,6 +12,8 @@ public:
     ~Game() = default;
     void Run() ;
     Block GetRandomBlock();
+    inline int GetScore() const { return clearedRows; } // Calcule le score en fonction du nombre de lignes effacées
+    inline Block GetNextBlock() const { return nextBlock; } // Renvoie le bloc suivant à afficher dans le panneau
 
  
 private:

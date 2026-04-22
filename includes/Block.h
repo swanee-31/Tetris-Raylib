@@ -6,17 +6,13 @@
 #include "raylib.h"
 
 class Block {   
-
 public:
     Block();
     ~Block() = default;
-    
     inline int GetId() const { return id; }
     void Draw();
-
     void Move(int dRow, int dCol);
     void Rotate();
-
     std::vector<Position> GetCurrentCells() const;
 
 protected:

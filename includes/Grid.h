@@ -23,7 +23,5 @@ private:
         void Print();
         void Test();
     #endif
-    
-
     std::vector<Block> blocks; // Vecteur pour stocker les blocs présents dans la grille
 };

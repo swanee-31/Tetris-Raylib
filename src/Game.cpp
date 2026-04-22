@@ -6,9 +6,13 @@
 
 Game::Game()
 {
+    /**
+     * @brief Fonction Init.
+     *
+     */
     Init();
     grid = std::make_unique<Grid>();
-    panel = std::make_unique<Panel>();
+    panel = std::make_unique<Panel>(this);
     
     if (!grid)
     {
@@ -29,6 +33,10 @@ void Game::Init()
 {
     // Logique d'initialisation du jeu
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE);
+    /**
+     * @brief Fonction SetTargetFPS.
+     *
+     */
     SetTargetFPS(TARGET_FPS);
     isPaused = false;
     clearedRows = 0;
@@ -47,14 +55,11 @@ void Game::Update()
 void Game::Draw()
 {
     // Logique de dessin du jeu
-
     BeginDrawing();
-
     ClearBackground(BACKGROUND_COLOR);
     grid->Draw();        // Dessine la grille
     currentBlock.Draw(); // Dessine le bloc actuel
     panel->Draw();
-
     EndDrawing();
 }
 
@@ -62,14 +67,18 @@ void Game::Run()
 {
     while (!WindowShouldClose())
     {
+    
         HandleInput();
+     
         Update();
         if (EventTriggered(MOVE_INTERVAL) && !isPaused)
         {
             MoveDown(); // Déplace le bloc vers le bas à intervalles réguliers
         }
+    
         Draw();
     }
+ 
     CloseWindow();
 }
 
@@ -94,19 +103,23 @@ void Game::HandleInput()
     switch (keyPressed)
     {
     case KEY_LEFT:
+   
         MoveLeft();
         break;
     case KEY_RIGHT:
+    
         MoveRight();
         break;
     case KEY_DOWN:
+   
         MoveDown();
         break;
     case KEY_UP:
+   
         Rotate();
         break;
     case KEY_SPACE:
-        isPaused = !isPaused; // Bascule l'état de pause du jeu
+        isPaused = !isPaused;
         break;
     default:
         break;

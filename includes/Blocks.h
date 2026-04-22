@@ -4,6 +4,7 @@
 
 class LBlock : public Block {
 public:
+    
     LBlock();
     ~LBlock() = default;
 };
